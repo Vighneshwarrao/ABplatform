@@ -23,7 +23,7 @@ async function uploadFile() {
     formData.append("test_type", testType);
 
     try {
-        const res = await fetch("http://15.207.107.135:8000/upload", {
+        const res = await fetch("https://abtestingapi.onrender.com/upload/", {
             method: "POST",
             body: formData
         });
@@ -41,7 +41,7 @@ async function uploadFile() {
 
 async function showPlots() {
     try {
-        const res = await fetch(`http://15.207.107.135:8000/get_plots/?exp_id=${exp_id}`);
+        const res = await fetch(`https://abtestingapi.onrender.com/get_plots/?exp_id=${exp_id}`);
         const data = await res.json();
 
         document.getElementById("barplot").src = "data:image/png;base64," + data.plot1;
@@ -56,7 +56,7 @@ async function showPlots() {
 async function showSummary() {
     const exp = document.getElementById("exp");
     try {
-        const res = await fetch(`http://15.207.107.135:8000/Summary/?exp_id=${exp_id}`);
+        const res = await fetch(`https://abtestingapi.onrender.com/Summary/?exp_id=${exp_id}`);
         const data = await res.json();
         exp.innerHTML = data.summary.replace(/\n/g, "<br>");
     } catch (err) {
